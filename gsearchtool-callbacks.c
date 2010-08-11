@@ -1073,6 +1073,7 @@ build_popup_menu_for_file (GSearchWindow * gsearch,
 			/* Popup menu item: Open with (default) */
 			str = g_strdup_printf (_("_Open with %s"),  g_app_info_get_name (list->data));
 			new1 = gtk_image_menu_item_new_with_mnemonic (str);
+			g_free (str);
 			gtk_widget_show (new1);
 
 			g_object_set_data_full (G_OBJECT (new1), "app", (GAppInfo *)list->data,
@@ -1112,6 +1113,7 @@ build_popup_menu_for_file (GSearchWindow * gsearch,
 				}
 				
 				new1 = gtk_image_menu_item_new_with_mnemonic (str);
+				g_free (str);
 				gtk_widget_show (new1);
 
 				g_object_set_data_full (G_OBJECT (new1), "app", (GAppInfo *)list->data,
