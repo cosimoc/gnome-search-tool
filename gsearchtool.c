@@ -1780,7 +1780,7 @@ handle_search_command_stderr_io (GIOChannel * ioc,
 					gtk_widget_show_all (hbox);
 
 					button = gsearchtool_button_new_with_stock_icon (_("Disable _Quick Search"), GTK_STOCK_OK);
-					GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+	                                gtk_widget_set_can_default (button, TRUE);
 					gtk_widget_show (button);
 
 					gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_OK);
@@ -2031,7 +2031,7 @@ create_constraint_box (GSearchWindow * gsearch,
 	}
 
 	button = gtk_button_new_from_stock (GTK_STOCK_REMOVE);
-	GTK_WIDGET_UNSET_FLAGS (button, GTK_CAN_DEFAULT);
+	gtk_widget_set_can_default (button, FALSE);
 
 	{
 		GList * list = NULL;
@@ -2177,7 +2177,7 @@ create_additional_constraint_section (GSearchWindow * gsearch)
 	}
 
 	gsearch->available_options_add_button = gtk_button_new_from_stock (GTK_STOCK_ADD);
-	GTK_WIDGET_UNSET_FLAGS (gsearch->available_options_add_button, GTK_CAN_DEFAULT);
+	gtk_widget_set_can_default (gsearch->available_options_add_button, FALSE);
 	gsearch->available_options_button_size_group = gtk_size_group_new (GTK_SIZE_GROUP_BOTH);
 	gtk_size_group_add_widget (gsearch->available_options_button_size_group, gsearch->available_options_add_button);
 
@@ -2837,7 +2837,7 @@ gsearch_app_create (GSearchWindow * gsearch)
 
 	gtk_box_set_spacing (GTK_BOX (hbox), 6);
 	button = gtk_button_new_from_stock (GTK_STOCK_HELP);
-	GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+	gtk_widget_set_can_default (button, TRUE);
 	gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
 	gtk_button_box_set_child_secondary (GTK_BUTTON_BOX (hbox), button, TRUE);
 	g_signal_connect (G_OBJECT (button), "clicked",
@@ -2847,7 +2847,7 @@ gsearch_app_create (GSearchWindow * gsearch)
 	}
 
 	button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
-	GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+	gtk_widget_set_can_default (button, TRUE);
 	g_signal_connect (G_OBJECT (button), "clicked",
 			  G_CALLBACK (click_close_cb), (gpointer) gsearch);
   	if (gsearch->is_window_accessible) {
@@ -2860,8 +2860,8 @@ gsearch_app_create (GSearchWindow * gsearch)
 	gsearch->find_button = gtk_button_new_from_stock (GTK_STOCK_FIND);
 	gsearch->stop_button = gtk_button_new_from_stock (GTK_STOCK_STOP);
 
-	GTK_WIDGET_SET_FLAGS (gsearch->find_button, GTK_CAN_DEFAULT);
-	GTK_WIDGET_SET_FLAGS (gsearch->stop_button, GTK_CAN_DEFAULT);
+	gtk_widget_set_can_default (gsearch->find_button, TRUE);
+	gtk_widget_set_can_default (gsearch->stop_button, TRUE);
 
 	gtk_box_pack_end (GTK_BOX (hbox), gsearch->stop_button, FALSE, FALSE, 0);
 	gtk_box_pack_end (GTK_BOX (hbox), gsearch->find_button, FALSE, FALSE, 0);
