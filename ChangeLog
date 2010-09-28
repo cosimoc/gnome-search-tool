@@ -1,3 +1,13 @@
+2010-09-28  Dennis Cranston  <dennis_cranston@yahoo.com>
+
+	* gsearchtool-support.c (backslash_special_characters):  
+	Fix bug 615787, searching for backslashes in text files.
+
+2010-09-28  Dennis Cranston  <dennis_cranston@yahoo.com>
+
+	* gsearchtool-callbacks.c (build_popup_menu_for_file):
+	Fixed some memory leaks.  Contributed by Viktors Petrovs.
+	
 2010-01-13  Vincent Untz  <vuntz@gnome.org>
 
 	* Makefile.am: fix distcheck after the previous change.
