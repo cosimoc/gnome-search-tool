@@ -1,5 +1,11 @@
 2010-09-28  Dennis Cranston  <dennis_cranston@yahoo.com>
 
+	* gsearchtool-callbacks.c (build_popup_menu_for_file),
+	help/C/gnome-search-tool.xml: Fix bug 619499, open folder
+	menu item can be misleading. Contributed by Andrew Fister.
+
+2010-09-28  Dennis Cranston  <dennis_cranston@yahoo.com>
+
 	* gsearchtool-support.c (backslash_special_characters):  
 	Fix bug 615787, searching for backslashes in text files.
 
