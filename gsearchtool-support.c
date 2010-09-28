@@ -622,7 +622,7 @@ backslash_special_characters (const gchar * string)
 		if (*string == '\\') {
 			g_string_append(gs, "\\\\");
 		}
-		if (*string == '-') {
+		else if (*string == '-') {
 			g_string_append(gs, "\\-");
 		}
 		else {
