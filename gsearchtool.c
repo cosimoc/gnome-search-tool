@@ -43,6 +43,7 @@
 #include <glib/gi18n.h>
 #include <gdk/gdk.h>
 #include <gio/gio.h>
+#include <locale.h>
 
 #include "gsearchtool.h"
 #include "gsearchtool-callbacks.h"
@@ -1292,12 +1293,12 @@ gsearch_setup_goption_descriptions (void)
 
 	for (j = 0; GSearchOptionTemplates[j].type != SEARCH_CONSTRAINT_TYPE_NONE; j++) {
 		if (GSearchOptionTemplates[j].type != SEARCH_CONSTRAINT_TYPE_SEPARATOR) {
-			gchar *text = remove_mnemonic_character (GSearchOptionTemplates[j].desc);
+			gchar *text = remove_mnemonic_character (_(GSearchOptionTemplates[j].desc));
 			if (GSearchOptionTemplates[j].type == SEARCH_CONSTRAINT_TYPE_BOOLEAN) {
-				GSearchGOptionEntries[i++].description = g_strdup_printf (_("Select the \"%s\" search option"), _(text));
+				GSearchGOptionEntries[i++].description = g_strdup_printf (_("Select the \"%s\" search option"), text);
 			}
 			else {
-				GSearchGOptionEntries[i++].description = g_strdup_printf (_("Select and set the \"%s\" search option"), _(text));
+				GSearchGOptionEntries[i++].description = g_strdup_printf (_("Select and set the \"%s\" search option"), text);
 			}
 			g_free (text);
 		}
@@ -2966,6 +2967,7 @@ main (int argc,
 	GError * error = NULL;
 	EggSMClient * client;
 
+	setlocale (LC_ALL, "");
 	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);

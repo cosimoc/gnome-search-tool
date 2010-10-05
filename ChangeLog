@@ -1,3 +1,10 @@
+2010-10-05  Dennis Cranston  <dennis_cranston@yahoo.com>
+
+	* gsearchtool.c (gsearch_setup_goption_descriptions): 
+	Fix bug 454650, fix display of --help output, by adding 
+	setlocale() call and moving gettext calls. Contributed
+	by Gabor Kelemen.
+	
 2010-09-28  Dennis Cranston  <dennis_cranston@yahoo.com>
 
 	* gsearchtool-callbacks.c (build_popup_menu_for_file),
