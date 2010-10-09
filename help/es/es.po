@@ -1,26 +1,24 @@
 # translation of gsearchtool.HEAD.po to Español
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2005, 2006.
 # translation of gsearchtool manual to Spanish
-# Jorge González <jorgegonz@svn.gnome.org>, 2005, 2007, 200, 2009.
+# Jorge González <jorgegonz@svn.gnome.org>, 2005, 2007, 2009, 2010.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gsearchtool.HEAD\n"
-"POT-Creation-Date: 2009-04-17 16:28+0000\n"
-"PO-Revision-Date: 2009-04-21 21:19+0200\n"
+"POT-Creation-Date: 2010-10-05 23:36+0000\n"
+"PO-Revision-Date: 2010-10-09 15:41+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnome-search-tool.xml:240(None)
-#| msgid ""
-#| "@@image: 'figures/gnome-search-tool_window.png'; "
-#| "md5=73417bbf49f21f5aa14c6201e932007e"
 msgid ""
 "@@image: 'figures/gnome-search-tool_window.png'; "
 "md5=bb0f097535682e53e6bd43c66f0373c7"
@@ -295,7 +293,6 @@ msgid "Alexander Kirillov <email>kirillov@math.sunysb.edu</email>"
 msgstr "Alexander Kirillov <email>kirillov@math.sunysb.edu</email>"
 
 #: C/gnome-search-tool.xml:180(releaseinfo)
-#| msgid "This manual describes version 2.12 of Search for Files."
 msgid "This manual describes version 2.26 of Search for Files."
 msgstr "Este manual describe la versión 2.26 de la búsqueda de archivos."
 
@@ -764,14 +761,10 @@ msgid "Follow symbolic links when searching for files."
 msgstr "Sigue los enlaces simbólicos al buscar archivos."
 
 #: C/gnome-search-tool.xml:432(para)
-#| msgid "Include other filesystems"
 msgid "Exclude other filesystems"
 msgstr "Excluir otros sistemas de archivos"
 
 #: C/gnome-search-tool.xml:434(para)
-#| msgid ""
-#| "Search in directories that are not in the same filesystem as the start "
-#| "directory."
 msgid ""
 "Search in directories that are in the same filesystem as the start directory."
 msgstr ""
@@ -814,14 +807,19 @@ msgid "Double-click on the file."
 msgstr "Doble pulsación en el archivo."
 
 #: C/gnome-search-tool.xml:455(para)
+#| msgid ""
+#| "To open the folder that contains a file displayed in the <guilabel>Search "
+#| "results</guilabel> list box, right-click on the file, then choose "
+#| "<guimenuitem>Open Folder</guimenuitem>."
 msgid ""
 "To open the folder that contains a file displayed in the <guilabel>Search "
 "results</guilabel> list box, right-click on the file, then choose "
-"<guimenuitem>Open Folder</guimenuitem>."
+"<guimenuitem>Open Containing Folder</guimenuitem>."
 msgstr ""
 "Para abrir la carpeta que contiene un archivo mostrado en la lista "
-"<guilabel>Buscar resultados</guilabel>, pulse con el botón derecho en el "
-"archivo, después elija <guimenuitem>Abrir carpeta</guimenuitem>."
+"<guilabel>Resultados de la búsqueda</guilabel>, pulse con el botón derecho "
+"en el archivo, después elija <guimenuitem>Abrir la carpeta contenedora</"
+"guimenuitem>."
 
 #: C/gnome-search-tool.xml:459(title)
 msgid "To Delete a Displayed File"
@@ -1011,7 +1009,7 @@ msgstr ""
 "guilabel> está expandida cuando se inicia  <application>Buscar archivos</"
 "application>."
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: C/gnome-search-tool.xml:0(None)
 msgid "translator-credits"
 msgstr ""
