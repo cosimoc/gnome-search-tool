@@ -3,12 +3,10 @@ Utilitiesdir = $(datadir)/applications
 SUBDIRS = data help libgnomeui-deprecated
 
 INCLUDES = 	\
-	$(GNOME_UTILS_CFLAGS)					\
-	$(GIO_UNIX_CFLAGS)					\
 	-I$(srcdir)/libgnomeui-deprecated			\
-	-I$(top_srcdir)/libeggsmclient			\
+	-I$(top_srcdir)/libeggsmclient				\
 	-DG_DISABLE_DEPRECATED					\
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	-DLOCALEDIR=\"$(datadir)/locale\"			\
 	-DDATADIR=\""$(datadir)"\"				\
 	-DGREP_COMMAND=\""$(GREP_COMMAND)"\"
@@ -31,10 +29,18 @@ gnome_search_tool_SOURCES =     \
 	gsearchtool.c	        \
 	gsearchtool.h
 
-gnome_search_tool_LDADD =            \
-	$(GNOME_UTILS_LIBS)          \
-	$(GIO_UNIX_LIBS)             \
-	$(libgnomeui_deprecated_LIB) \
+gnome_search_tool_CFLAGS = \
+	$(GLIB_CFLAGS)			\
+	$(GIO_CFLAGS)			\
+	$(GIO_UNIX_CFLAGS)		\
+	$(GTK2_CFLAGS)			\
+	$(GCONF_CFLAGS)
+
+gnome_search_tool_LDADD = \
+	$(GNOME_UTILS_LIBS)		\
+	$(GTK2_LIBS)			\
+	$(GIO_UNIX_LIBS)		\
+	$(libgnomeui_deprecated_LIB)	\
 	$(libeggsmclient_LIB)
 
 man_MANS = gnome-search-tool.1
