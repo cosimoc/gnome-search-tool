@@ -47,12 +47,12 @@ typedef struct _GsearchHistoryEntryPrivate GsearchHistoryEntryPrivate;
 
 struct _GsearchHistoryEntryClass
 {
-	GtkComboBoxEntryClass parent_class;
+	GtkComboBoxClass parent_class;
 };
 
 struct _GsearchHistoryEntry
 {
-	GtkComboBoxEntry parent_instance;
+	GtkComboBox parent_instance;
 	GsearchHistoryEntryPrivate *priv;
 };
 

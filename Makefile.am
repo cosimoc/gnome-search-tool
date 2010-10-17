@@ -33,12 +33,12 @@ gnome_search_tool_CFLAGS = \
 	$(GLIB_CFLAGS)			\
 	$(GIO_CFLAGS)			\
 	$(GIO_UNIX_CFLAGS)		\
-	$(GTK2_CFLAGS)			\
+	$(GTK_CFLAGS)			\
 	$(GCONF_CFLAGS)
 
 gnome_search_tool_LDADD = \
 	$(GNOME_UTILS_LIBS)		\
-	$(GTK2_LIBS)			\
+	$(GTK_LIBS)			\
 	$(GIO_UNIX_LIBS)		\
 	$(libgnomeui_deprecated_LIB)	\
 	$(libeggsmclient_LIB)

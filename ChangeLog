@@ -1,3 +1,9 @@
+2010-10-17  Dennis Cranston  <dennis_cranston@yahoo.com>
+
+        * gsearchtool.c, gsearchtool-callbacks.c,
+        libgnomeui-deprecated/gsearchtool-entry.[ch]:
+        Migrate code to GTK3.
+
 2010-10-05  Dennis Cranston  <dennis_cranston@yahoo.com>
 
 	* gsearchtool.c (gsearch_setup_goption_descriptions): 

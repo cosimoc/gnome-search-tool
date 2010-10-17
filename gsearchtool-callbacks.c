@@ -195,10 +195,6 @@ click_help_cb (GtkWidget * widget,
 		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 		                                          error->message, NULL);
 
-		gtk_window_set_title (GTK_WINDOW (dialog), "");
-		gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-		gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
-
 		g_signal_connect (G_OBJECT (dialog),
                                   "response",
                                   G_CALLBACK (gtk_widget_destroy), NULL);
@@ -270,7 +266,7 @@ remove_constraint_cb (GtkWidget * widget,
 	                               &gsearch->window_geometry,
 	                               GDK_HINT_MIN_SIZE);
 
-	gtk_container_remove (GTK_CONTAINER (gsearch->available_options_vbox), widget->parent);
+	gtk_container_remove (GTK_CONTAINER (gsearch->available_options_vbox), gtk_widget_get_parent (widget));
 
 	gsearch->available_options_selected_list =
 	    g_list_remove (gsearch->available_options_selected_list, constraint);
@@ -360,10 +356,6 @@ display_dialog_file_open_limit (GtkWidget * window,
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          secondary, NULL);
 
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
-
 	button = gtk_button_new_from_stock ("gtk-open");
 	gtk_widget_set_can_default (button, TRUE);
 	gtk_widget_show (button);
@@ -397,10 +389,6 @@ display_dialog_could_not_open_file (GtkWidget * window,
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          message, NULL);
 
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
-
 	g_signal_connect (G_OBJECT (dialog),
                		  "response",
                		  G_CALLBACK (gtk_widget_destroy), NULL);
@@ -425,10 +413,6 @@ display_dialog_could_not_open_folder (GtkWidget * window,
 	                                 primary, NULL);
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          _("The nautilus file manager is not running."));
-
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
 
 	g_signal_connect (G_OBJECT (dialog),
                		  "response",
@@ -493,7 +477,7 @@ open_file_cb (GtkMenuItem * action,
 		if (!no_files_found) {
 			GAppInfo * app = NULL;
 
-			if (GTK_IS_OBJECT (action)) {
+			if (GTK_IS_MENU_ITEM (action)) {
 				app = g_object_get_data (G_OBJECT (action), "app");
 			}
 
@@ -556,10 +540,6 @@ display_dialog_folder_open_limit (GtkWidget * window,
 	                                 primary, NULL);
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          secondary, NULL);
-
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
 
 	button = gtk_button_new_from_stock ("gtk-open");
 	gtk_widget_set_can_default (button, TRUE);
@@ -702,10 +682,6 @@ display_dialog_could_not_move_to_trash (GtkWidget * window,
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          message, NULL);
 
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
-
 	g_signal_connect (G_OBJECT (dialog),
                		  "response",
                		  G_CALLBACK (gtk_widget_destroy), NULL);
@@ -736,10 +712,6 @@ display_dialog_delete_permanently (GtkWidget * window,
 	                                 primary, NULL);
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          secondary, NULL);
-
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
 
 	button = gtk_button_new_from_stock ("gtk-delete");
 	gtk_widget_set_can_default (button, TRUE);
@@ -774,10 +746,6 @@ display_dialog_could_not_delete (GtkWidget * window,
 	                                 primary, NULL);
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          message, NULL);
-
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
 
 	g_signal_connect (G_OBJECT (dialog),
                		  "response",
@@ -958,15 +926,15 @@ file_key_press_event_cb (GtkWidget * widget,
                          GdkEventKey * event,
                          gpointer data)
 {
-	if (event->keyval == GDK_space  ||
-	    event->keyval == GDK_Return ||
-	    event->keyval == GDK_KP_Enter) {
+	if (event->keyval == GDK_KEY_space  ||
+	    event->keyval == GDK_KEY_Return ||
+	    event->keyval == GDK_KEY_KP_Enter) {
 		if (event->state != GDK_CONTROL_MASK) {
 			open_file_cb ((GtkMenuItem *) NULL, data);
 			return TRUE;
 		}
 	}
-	else if (event->keyval == GDK_Delete) {
+	else if (event->keyval == GDK_KEY_Delete) {
 		move_to_trash_cb ((GtkAction *) NULL, data);
 		return TRUE;
 	}
@@ -1581,7 +1549,7 @@ drag_file_cb  (GtkWidget * widget,
 				uri_list = g_strconcat (uri_list, "\n", tmp_uri, NULL);
 			}
 			gtk_selection_data_set (selection_data,
-			                        selection_data->target,
+			                        gtk_selection_data_get_target (selection_data),
 			                        8,
 			                        (guchar *) uri_list,
 			                        strlen (uri_list));
@@ -1648,10 +1616,6 @@ display_dialog_could_not_save_no_name (GtkWidget * window)
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          secondary, NULL);
 
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
-
 	g_signal_connect (G_OBJECT (dialog),
 	                  "response",
 	                  G_CALLBACK (gtk_widget_destroy), NULL);
@@ -1679,10 +1643,6 @@ display_dialog_could_not_save_to (GtkWidget * window,
 	                                 primary, NULL);
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          message, NULL);
-
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
 
 	g_signal_connect (G_OBJECT (dialog),
 	                  "response",
@@ -1716,10 +1676,6 @@ display_dialog_could_not_save_exists (GtkWidget * window,
 	                                 primary);
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                          secondary);
-
-	gtk_window_set_title (GTK_WINDOW (dialog), "");
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
 
 	button = gsearchtool_button_new_with_stock_icon (_("_Replace"), GTK_STOCK_OK);
 	GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
@@ -1836,7 +1792,7 @@ key_press_cb (GtkWidget * widget,
 
 	g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
 
-	if (event->keyval == GDK_Escape) {
+	if (event->keyval == GDK_KEY_Escape) {
 		if (gsearch->command_details->command_status == RUNNING) {
 			click_stop_cb (widget, data);
 		}
@@ -1844,7 +1800,7 @@ key_press_cb (GtkWidget * widget,
 			quit_cb (widget, (GdkEvent *) NULL, data);
 		}
 	}
-	else if (event->keyval == GDK_F10) {
+	else if (event->keyval == GDK_KEY_F10) {
 		if (event->state & GDK_SHIFT_MASK) {
 			gboolean no_files_found = FALSE;
 			GtkTreeModel * model;

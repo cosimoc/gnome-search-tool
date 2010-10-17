@@ -60,7 +60,7 @@ struct _GsearchHistoryEntryPrivate
 	GConfClient        *gconf_client;
 };
 
-G_DEFINE_TYPE (GsearchHistoryEntry, gsearch_history_entry, GTK_TYPE_COMBO_BOX_ENTRY)
+G_DEFINE_TYPE (GsearchHistoryEntry, gsearch_history_entry, GTK_TYPE_COMBO_BOX)
 
 static void
 gsearch_history_entry_set_property (GObject      *object,
@@ -112,12 +112,12 @@ gsearch_history_entry_get_property (GObject    *object,
 }
 
 static void
-gsearch_history_entry_destroy (GtkObject *object)
+gsearch_history_entry_destroy (GtkWidget *object)
 {
 	gsearch_history_entry_set_enable_completion (GSEARCH_HISTORY_ENTRY (object),
 						   FALSE);
 
-	GTK_OBJECT_CLASS (gsearch_history_entry_parent_class)->destroy (object);
+	GTK_WIDGET_CLASS (gsearch_history_entry_parent_class)->destroy_event (object, NULL);
 }
 
 static void
@@ -142,12 +142,12 @@ static void
 gsearch_history_entry_class_init (GsearchHistoryEntryClass *klass)
 {
 	GObjectClass   *object_class = G_OBJECT_CLASS (klass);
-	GtkObjectClass *gtkobject_class = GTK_OBJECT_CLASS (klass);
+	GtkWidgetClass *gtkwidget_class = GTK_WIDGET_CLASS (klass);
 	
 	object_class->set_property = gsearch_history_entry_set_property;
 	object_class->get_property = gsearch_history_entry_get_property;
 	object_class->finalize = gsearch_history_entry_finalize;
-	gtkobject_class->destroy = gsearch_history_entry_destroy;
+	gtkwidget_class->destroy = gsearch_history_entry_destroy;
 	
 	g_object_class_install_property (object_class,
 					 PROP_HISTORY_ID,
@@ -494,7 +494,7 @@ gsearch_history_entry_set_enable_completion (GsearchHistoryEntry *entry,
 		gtk_entry_completion_set_inline_completion (entry->priv->completion, TRUE);
 	
 		/* Assign the completion to the entry */
-		gtk_entry_set_completion (GTK_ENTRY (gsearch_history_entry_get_entry(entry)), 
+		gtk_entry_set_completion (GTK_ENTRY (gsearch_history_entry_get_entry (entry)), 
 					  entry->priv->completion);
 	}
 	else
@@ -537,9 +537,10 @@ gsearch_history_entry_new (const gchar *history_id,
 	store = gtk_list_store_new (1, G_TYPE_STRING);
 
 	ret = g_object_new (GSEARCH_TYPE_HISTORY_ENTRY,
+			    "has-entry", TRUE,
 			    "history-id", history_id,
 	                    "model", store,
-			    "text-column", 0,
+			    "entry-text-column", 0,
 	                    NULL);
 
 	g_object_unref (store);
