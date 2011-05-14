@@ -10,9 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils-gsearchtool documentation\n"
-"POT-Creation-Date: 2009-04-17 16:28+0000\n"
-"PO-Revision-Date: 2009-09-05 09:30+0200\n"
-"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
+"POT-Creation-Date: 2011-04-25 16:47+0000\n"
+"PO-Revision-Date: 2011-05-14 21:48+0100\n"
+"Last-Translator: Alexandre Franke <alexandre.franke@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -817,11 +817,12 @@ msgstr "Double-cliquez sur le fichier."
 msgid ""
 "To open the folder that contains a file displayed in the <guilabel>Search "
 "results</guilabel> list box, right-click on the file, then choose "
-"<guimenuitem>Open Folder</guimenuitem>."
+"<guimenuitem>Open Containing Folder</guimenuitem>."
 msgstr ""
 "Pour ouvrir le dossier contenant un fichier affiché dans la liste "
 "<guilabel>Résultats de la recherche</guilabel>, cliquez avec le bouton droit "
-"sur le fichier, puis choisissez <guimenuitem>Ouvrir le dossier</guimenuitem>."
+"sur le fichier, puis choisissez <guimenuitem>Ouvrir le dossier conteneur</"
+"guimenuitem>."
 
 #: C/gnome-search-tool.xml:459(title)
 msgid "To Delete a Displayed File"
@@ -1012,7 +1013,7 @@ msgstr ""
 "guilabel> est développée lors du démarrage de la <application>Recherche de "
 "fichiers</application>."
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: C/gnome-search-tool.xml:0(None)
 msgid "translator-credits"
 msgstr ""
