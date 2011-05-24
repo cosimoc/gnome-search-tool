@@ -1,3 +1,15 @@
+2011-05-23  Dennis Cranston  <dennis_cranston@yahoo.com>
+
+        * gsearchtool-support.c:
+        Fix bug 649016, unable to open folders.
+        Patch contributed by Edward Sheldrake.
+	
+2011-05-23  Dennis Cranston  <dennis_cranston@yahoo.com>
+
+        * libgnomeui-deprecated/gsearchtool-entry.c:
+        Fix bug 647072, segfault on window close.
+        Patch contributed by Edward Sheldrake.
+
 2010-10-17  Dennis Cranston  <dennis_cranston@yahoo.com>
 
         * gsearchtool.c, gsearchtool-callbacks.c,

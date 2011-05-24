@@ -117,7 +117,7 @@ gsearch_history_entry_destroy (GtkWidget *object)
 	gsearch_history_entry_set_enable_completion (GSEARCH_HISTORY_ENTRY (object),
 						   FALSE);
 
-	GTK_WIDGET_CLASS (gsearch_history_entry_parent_class)->destroy_event (object, NULL);
+	GTK_WIDGET_CLASS (gsearch_history_entry_parent_class)->destroy (object);
 }
 
 static void

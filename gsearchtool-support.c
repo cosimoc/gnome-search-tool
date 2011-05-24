@@ -1212,7 +1212,6 @@ open_file_with_filemanager (GtkWidget * window,
 
 	if (strcmp (g_app_info_get_executable (g_app_info), "nautilus") == 0) {
 		command = g_strconcat ("nautilus ",
-		                       "--sm-disable ",
 		                       "--no-desktop ",
 		                       "--no-default-window ",
 		                       NULL);
