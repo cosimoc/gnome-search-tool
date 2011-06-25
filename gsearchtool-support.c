@@ -1191,7 +1191,8 @@ get_file_pixbuf (GSearchWindow * gsearch,
 
 gboolean
 open_file_with_filemanager (GtkWidget * window,
-                            const gchar * file)
+                            const gchar * file,
+                            gboolean open_parent)
 {
 	GDesktopAppInfo * d_app_info;
 	GKeyFile * key_file;
@@ -1204,10 +1205,17 @@ open_file_with_filemanager (GtkWidget * window,
 	gchar * uri;
 	gboolean result = TRUE;
 
-	uri = g_filename_to_uri (file, NULL, NULL);
-	list = g_list_prepend (list, uri);
+	if (open_parent == TRUE && g_file_test (file, G_FILE_TEST_IS_DIR)) {
+		gchar * folder = g_path_get_dirname (file);
+		uri = g_filename_to_uri (folder, NULL, NULL);
+		g_free (folder);
+	}
+	else {
+		uri = g_filename_to_uri (file, NULL, NULL);
+	}
 
-	g_file = g_file_new_for_path (file);
+	list = g_list_prepend (list, uri);
+	g_file = g_file_new_for_path (g_path_get_dirname (file));
 	g_app_info = g_file_query_default_handler (g_file, NULL, NULL);
 
 	if (strcmp (g_app_info_get_executable (g_app_info), "nautilus") == 0) {

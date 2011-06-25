@@ -494,7 +494,7 @@ open_file_cb (GtkMenuItem * action,
 
 					if (g_file_test (locale_file, G_FILE_TEST_IS_DIR)) {
 
-						if (open_file_with_filemanager (gsearch->window, locale_file) == FALSE) {
+						if (open_file_with_filemanager (gsearch->window, locale_file, FALSE) == FALSE) {
 							display_dialog_could_not_open_folder (gsearch->window, utf8_name);
 						}
 					}
@@ -612,7 +612,7 @@ open_folder_cb (GtkAction * action,
 
 		if (open_file_with_application (gsearch->window, locale_folder, g_app_info) == FALSE) {
 
-			if (open_file_with_filemanager (gsearch->window, locale_folder) == FALSE) {
+			if (open_file_with_filemanager (gsearch->window, locale_file, TRUE) == FALSE) {
 
 				display_dialog_could_not_open_folder (gsearch->window, utf8_folder);
 
