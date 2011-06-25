@@ -664,6 +664,10 @@ build_search_command (GSearchWindow * gsearch,
 			    	gsearch->show_thumbnails = TRUE;
 				gsearch->show_thumbnails_file_size_limit = gsearchtool_gconf_get_int ("/apps/nautilus/preferences/thumbnail_limit");
 			}
+			else if (show_thumbnails_string == NULL) { /* FIXME: Nautilus 3.0 uses dconf -- for now fallback to the defaults. */
+				gsearch->show_thumbnails = TRUE;
+				gsearch->show_thumbnails_file_size_limit = 10485760;
+			}
 			else {
 				gsearch->show_thumbnails = FALSE;
 				gsearch->show_thumbnails_file_size_limit = 0;

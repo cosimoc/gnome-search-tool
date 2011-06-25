@@ -1,5 +1,10 @@
 2011-06-24  Dennis Cranston  <dennis_cranston@yahoo.com>
 
+        * gsearchtool.c:
+        Temporary patch to get thumbnails working.
+	
+2011-06-24  Dennis Cranston  <dennis_cranston@yahoo.com>
+
         * gsearchtool-callbacks.c, gsearchtool-support.[ch]:
         Allow nautilus to highlight the file when using the 
 	'Open Containing Folder' menu option.
