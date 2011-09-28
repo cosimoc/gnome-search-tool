@@ -1,0 +1,9 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/gnome-search-tool.desktop.in
+data/gnome-search-tool.schemas.in
+src/gsearchtool-callbacks.c
+src/gsearchtool-support.c
+src/gsearchtool.c
+libeggsmclient/eggdesktopfile.c
+libeggsmclient/eggsmclient.c

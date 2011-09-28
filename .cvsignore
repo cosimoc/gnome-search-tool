@@ -1,9 +1,0 @@
-Makefile
-Makefile.in
-gnome-search-tool
-gnome-search-tool.desktop
-gnome-search-tool.schemas
-.deps
-.libs
-_libs
-.exrc
